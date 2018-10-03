@@ -1,0 +1,1 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.huaihkiss.commons.kronos.client.configure.CommonJobConfiguration
