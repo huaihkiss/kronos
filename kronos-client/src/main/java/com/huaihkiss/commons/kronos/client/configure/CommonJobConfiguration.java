@@ -47,9 +47,6 @@ public class CommonJobConfiguration {
             zooKeeper = new ZooKeeper(clientsProperties.getZookeeperClusterAddress(), 30 * 1000, new Watcher() {
                 @Override
                 public void process(WatchedEvent watchedEvent) {
-//                    if(watchedEvent.getPath().equalsIgnoreCase("/qmzb/plan/")){
-//
-//                    }
                 }
             });
             Stat stat = zooKeeper.exists(Constants.ZK_PLAN_PATH, true);
@@ -167,13 +164,12 @@ public class CommonJobConfiguration {
         }
         ZkWatcher watcher = new ZkWatcher();
         watcher.setLatch(new CountDownLatch(1));
-        ZooKeeper zooKeeper = new ZooKeeper("192.168.1.248:2181", 30000,watcher );
+        ZooKeeper zooKeeper = new ZooKeeper("localhost:2181", 30000,watcher );
 
-//        String s = zooKeeper.create("/qmzb/job/a", new byte[2], ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
         watcher.getLatch().await();
         CountDownLatch latch = new CountDownLatch(1);
 
-        final String idPath = "/qmzb/job";
+        final String idPath = "/kronos";
         Watcher childWatcher = new Watcher() {
             @Override
             public void process(WatchedEvent event) {

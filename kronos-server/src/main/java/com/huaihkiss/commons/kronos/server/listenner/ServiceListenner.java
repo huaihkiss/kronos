@@ -79,7 +79,7 @@ public class ServiceListenner {
     }
     public static void main(String ... args) throws IOException, KeeperException, InterruptedException {
         //连接zookeeper
-        ZooKeeper zooKeeper = connectionZooKeeper("192.168.1.248:2181");
+        ZooKeeper zooKeeper = connectionZooKeeper("localhost:2181");
         //初始化kronos目录
         initKronosPath(zooKeeper);
         CountDownLatch latch = new CountDownLatch(1);
